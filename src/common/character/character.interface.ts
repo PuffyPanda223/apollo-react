@@ -2,7 +2,7 @@ export interface Episode
 {
     id:number
     name:string
-}
+};
 
 export interface CharacterDetails 
 {
@@ -11,7 +11,7 @@ export interface CharacterDetails
     status:string 
     image?:string
     // ? means its optional
-    episodes?:Array<Episode>
+    episode?:Array<Episode>
     gender:string
     species:string 
 };
@@ -20,9 +20,10 @@ export interface Info
 {
     count:number
     pages:number
-}
+    next?:string 
+    previous?:string
+};
 
-// a character query comes with an info object and a results object which is an array
 export interface Characters {
     info:Info
     results:Array<CharacterDetails>

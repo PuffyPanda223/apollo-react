@@ -9,14 +9,14 @@ const CharacterCellDisplay: React.FC<{char:CharacterDetails}> = ({char}:{char:Ch
            <p>species : {char.species}</p>
            <p>gender : {char.gender}</p>
            <p>status : {char.status}</p>
-           {char.episodes &&
+           {char.episode &&
             <div>
                 <p>List of episodes {char.name} appears in</p>
                 <ul>
-                    {char.episodes.map(episode=>{
+                    {char.episode.map(ep=>{
                         return (
-                            <li key = {episode.id}>
-                                {episode.name}
+                            <li key = {ep.id}>
+                                {ep.name}
                             </li>        
                         )
                     })}

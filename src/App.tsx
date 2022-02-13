@@ -1,10 +1,11 @@
 //dependicies
 import React from 'react';
 import {NavLink, BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-
+import {ApolloProvider} from '@apollo/client';
 // components 
-import CharactersComponent from './characters.page';
+import CharactersComponent from './components/characters.page';
 import About from './about.page';
+import client from './common/apollo-client';
 const Header : React.FC = () => {
   return(
     <div>
@@ -20,13 +21,15 @@ const Header : React.FC = () => {
 
 const App : React.FC= () => {
   return (
-   <Router>
-      <Header />
-      <Routes>
-          <Route path="/" element={<About/>}/>
-          <Route path="/characters" element={<CharactersComponent />}/>
-      </Routes>      
-   </Router>
+    <ApolloProvider client = {client} >
+      <Router>
+          <Header />
+          <Routes>
+              <Route path="/" element={<About/>}/>
+              <Route path="/characters" element={<CharactersComponent />}/>
+          </Routes>      
+      </Router>
+    </ApolloProvider>
   );
 }
 
