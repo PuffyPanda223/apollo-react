@@ -1,11 +1,44 @@
-import CharacterCell from './character-cell.component';
+//import CharacterCell from './character-cell.component';
+import {Characters, CharacterDetails} from '../../common/character/character.interface';
 
-const CharacterGrid : React.FC = (arr:any) =>
+const CharacterCellDisplay: React.FC<{char:CharacterDetails}> = ({char}:{char:CharacterDetails}) =>
 {
-    console.log(arr);
     return(
-        <div>
-            sal;dm,asd
+        <div style={{margin:'12px'}}>
+           <p>name : {char.name} </p>
+           <p>species : {char.species}</p>
+           <p>gender : {char.gender}</p>
+           <p>status : {char.status}</p>
+           {char.episodes &&
+            <div>
+                <p>List of episodes {char.name} appears in</p>
+                <ul>
+                    {char.episodes.map(episode=>{
+                        return (
+                            <li key = {episode.id}>
+                                {episode.name}
+                            </li>        
+                        )
+                    })}
+                </ul>
+            </div>
+           }
+           {char.image && 
+            <img src = {char.image} />
+           }
+        </div>
+    );
+};
+
+const CharacterGrid : React.FC<Characters> = ({results, info}:Characters) =>
+{
+    return(
+        <div className='character-grid'>
+            {results.map((item)=>{
+                return <div key = {item.id}> 
+                     <CharacterCellDisplay char={item} />
+                </div>
+            })}
         </div>
     );
 }
