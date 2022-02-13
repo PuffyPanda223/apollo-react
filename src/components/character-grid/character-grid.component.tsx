@@ -30,10 +30,22 @@ const CharacterCellDisplay: React.FC<{char:CharacterDetails}> = ({char}:{char:Ch
     );
 };
 
-const CharacterGrid : React.FC<Characters> = ({results, info}:Characters) =>
+const CharacterGrid : React.FC<Characters> = ({results, info}:Characters, nextPage:any) =>
 {
+    const btn = () => {
+        console.log("button clicked");
+        console.log(info.next);
+    }
     return(
         <div className='character-grid'>
+            <div>
+                <p>total pages: {info.pages}</p>
+                <p>total amount of enteries with the query : {info.count}</p>
+                {info.next &&
+                    
+                    <button onClick={btn}> Next Page</button>
+                }
+            </div>
             {results.map((item)=>{
                 return <div key = {item.id}> 
                      <CharacterCellDisplay char={item} />

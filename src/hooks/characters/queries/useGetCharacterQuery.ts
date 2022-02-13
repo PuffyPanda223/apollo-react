@@ -11,6 +11,7 @@ const GET_CHARACTERS = gql`
             info{
                 pages
                 count 
+                next
             }
             results{
                 id
@@ -22,6 +23,7 @@ const GET_CHARACTERS = gql`
                 }
                 gender
                 species
+                image
             }
         }
     }
